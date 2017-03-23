@@ -28,6 +28,28 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/cities/:id/jobOpenings/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      City city = City.find(Integer.parseInt(request.params(":id")));
+      model.put("city", city);
+      model.put("template", "templates/city-jobOpening-form.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
-  }
+    post("/cities/:id/jobOpenings/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      City city = City.find(Integer.parseInt(request.params(":id")));
+
+      String title = request.queryParams("title");
+      String description = request.queryParams("description");
+      String contact = request.queryParams("contact");
+
+      JobOpening newJobOpening = new JobOpening(title, description, contact);
+
+      model.put("city", city);
+      model.put("template", "templates/city.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+   }
 }
