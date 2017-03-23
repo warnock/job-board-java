@@ -14,4 +14,10 @@ public class JobOpeningTest {
     JobOpening myJobOpening = new JobOpening("title", "description",  "contact");
     assertEquals("title", myJobOpening.getTitle());
   }
+
+  @Test
+  public void getDescription_getsDescruotuinValue_description() {
+    JobOpening myJobOpening = new JobOpening("title", "description",  "contact");
+    assertEquals("description", myJobOpening.getDescription());
+  }
 }
