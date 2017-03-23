@@ -35,4 +35,27 @@ public class  CityTest {
     City testCity = new City("Portland");
     assertEquals(1, testCity.getId());
   }
+
+  @Test
+  public void find_returnsCityWithSameId_testCity1() {
+    City.clear();
+    City testCity1 = new City("Portland");
+    assertEquals(testCity1, City.find(testCity1.getId()));
+  }
+
+  @Test
+  public void getJobOpenings_initiallyReturnsEmptyList_ArrayList() {
+    City.clear();
+    City testCity = new City("Portland");
+    assertEquals(0, testCity.getJobOpenings().size());
+  }
+
+  @Test
+  public void addJobOpening_addJobOpeningToList_true() {
+    City.clear();
+    City testCity = new City("Portland");
+    JobOpening testJobOpening = new JobOpening("title", "description",  "contact");
+    testCity.addJobOpening(testJobOpening);
+    assertTrue(testCity.getJobOpenings().contains(testJobOpening));
+  }
 }

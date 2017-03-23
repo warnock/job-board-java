@@ -6,11 +6,13 @@ public class City {
   private String mName;
   private static List<City> instances = new ArrayList<City>();
   private int mId;
+  private List<JobOpening> myJobOpenings;
 
   public City(String name) {
       mName = name;
       instances.add(this);
       mId = instances.size();
+      myJobOpenings = new ArrayList<JobOpening>();
   }
 
   public String getName() {
@@ -27,5 +29,17 @@ public class City {
 
   public int getId() {
     return mId;
+  }
+
+  public static City find(int id) {
+    return instances.get(id - 1);
+  }
+
+  public List<JobOpening> getJobOpenings() {
+    return myJobOpenings;
+  }
+
+  public void addJobOpening(JobOpening jobOpening) {
+    myJobOpenings.add(jobOpening);
   }
 }

@@ -40,4 +40,8 @@ public class JobOpening {
   public int getId() {
     return mId;
   }
+
+  public static JobOpening find(int id) {
+    return instances.get(id - 1);
+  }
 }

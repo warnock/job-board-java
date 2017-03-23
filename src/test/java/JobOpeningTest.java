@@ -50,4 +50,12 @@ public class JobOpeningTest {
     JobOpening myJobOpening = new JobOpening("UI Developer", "description",  "contact");
     assertEquals(1, myJobOpening.getId());
   }
+
+  @Test
+  public void find_returnsJobOpeningWithSameId_secondJobOpening() {
+    JobOpening.clear();
+    JobOpening firstJobOpening = new JobOpening("Java Developer", "description",  "contact");
+    JobOpening secondJobOpening = new JobOpening("UI Developer", "description",  "contact");
+    assertEquals(secondJobOpening, JobOpening.find(secondJobOpening.getId()));
+  }
 }
