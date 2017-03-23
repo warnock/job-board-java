@@ -15,7 +15,7 @@ public class JobOpening {
   }
 
   public String getDescription(){
-    return "";
+    return mDescription;
   }
 
 }
