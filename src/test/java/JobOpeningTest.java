@@ -8,4 +8,10 @@ public class JobOpeningTest {
     JobOpening myJobOpening = new JobOpening("title", "description",  "contact");
     assertEquals(true, myJobOpening instanceof JobOpening);
   }
+
+  @Test
+  public void getTitle_getsTitleValue_title() {
+    JobOpening myJobOpening = new JobOpening("title", "description",  "contact");
+    assertEquals("title", myJobOpening.getTitle());
+  }
 }
