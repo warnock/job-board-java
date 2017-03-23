@@ -45,11 +45,19 @@ public class App {
       String contact = request.queryParams("contact");
 
       JobOpening newJobOpening = new JobOpening(title, description, contact);
-
+      city.addJobOpening(newJobOpening);
       model.put("city", city);
       model.put("template", "templates/city.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/cities/:cityId/jobOpenings/:jobId", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      City city = City.find(Integer.parseInt(request.params(":cityId")));
+      JobOpening jobOpening = JobOpening.find(Integer.parseInt(request.params(":jobId")));
+      model.put("jobOpening", jobOpening);
+      model.put("template", "templates/jobOpening.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
    }
 }
